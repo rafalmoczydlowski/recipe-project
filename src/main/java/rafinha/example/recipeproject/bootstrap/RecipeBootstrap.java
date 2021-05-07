@@ -82,30 +82,29 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
                 "9. Cool and serve");
         lasagnaRecipe.setUrl("https://www.simplyrecipes.com/recipes/lasagna/");
         Notes lasagnaNotes = new Notes();
-        lasagnaNotes.setRecipe(lasagnaRecipe);
         lasagnaNotes.setRecipeNotes("This classic lasagna is made with an easy meat sauce as the base. Layer the sauce with noodles and cheese, then bake until bubbly! This is great for feeding a big family, and freezes well, too.");
 
         lasagnaRecipe.setNotes(lasagnaNotes);
 
-        lasagnaRecipe.getIngredients().add(new Ingredient("Extra virgin olive oil", lasagnaRecipe));
-        lasagnaRecipe.getIngredients().add(new Ingredient("lean ground beef", new BigDecimal(1), lb, lasagnaRecipe));
-        lasagnaRecipe.getIngredients().add(new Ingredient("diced onion", new BigDecimal("0.75"), cup, lasagnaRecipe));
-        lasagnaRecipe.getIngredients().add(new Ingredient("large diced bell pepper (green, red, or yellow)", new BigDecimal("0.75"), cup, lasagnaRecipe));
-        lasagnaRecipe.getIngredients().add(new Ingredient("minced cloves garlic", new BigDecimal(2), each, lasagnaRecipe));
-        lasagnaRecipe.getIngredients().add(new Ingredient("28-ounce can good quality tomato sauce", new BigDecimal(1), each, lasagnaRecipe));
-        lasagnaRecipe.getIngredients().add(new Ingredient(" tomato paste", new BigDecimal(3), ounce, lasagnaRecipe));
-        lasagnaRecipe.getIngredients().add(new Ingredient("14-ounce can crushed tomatoes", new BigDecimal(1), each, lasagnaRecipe));
-        lasagnaRecipe.getIngredients().add(new Ingredient("chopped fresh oregano", new BigDecimal(2), tablespoon, lasagnaRecipe));
-        lasagnaRecipe.getIngredients().add(new Ingredient("chopped fresh parsley (preferably flat leaf)", new BigDecimal("0.25"), cup, lasagnaRecipe));
-        lasagnaRecipe.getIngredients().add(new Ingredient("Italian Seasoning", new BigDecimal(1), tablespoon, lasagnaRecipe));
-        lasagnaRecipe.getIngredients().add(new Ingredient("garlic powder and/or garlic salt", new BigDecimal(1), pinch, lasagnaRecipe));
-        lasagnaRecipe.getIngredients().add(new Ingredient("red or white wine vinegar", new BigDecimal(1), tablespoon,lasagnaRecipe));
-        lasagnaRecipe.getIngredients().add(new Ingredient("sugar", new BigDecimal(1), tablespoon, lasagnaRecipe));
-        lasagnaRecipe.getIngredients().add(new Ingredient("salt", lasagnaRecipe));
-        lasagnaRecipe.getIngredients().add(new Ingredient("dry lasagna noodles ", new BigDecimal("0.5"), lb, lasagnaRecipe));
-        lasagnaRecipe.getIngredients().add(new Ingredient("Ricotta cheese", new BigDecimal(15), ounce, lasagnaRecipe));
-        lasagnaRecipe.getIngredients().add(new Ingredient("Mozzarella cheese", new BigDecimal(24), ounce, lasagnaRecipe));
-        lasagnaRecipe.getIngredients().add(new Ingredient("freshly grated Parmesan cheese", new BigDecimal(4), ounce, lasagnaRecipe));
+        lasagnaRecipe.addIngredient(new Ingredient("Extra virgin olive oil"));
+        lasagnaRecipe.addIngredient(new Ingredient("lean ground beef", new BigDecimal(1), lb));
+        lasagnaRecipe.addIngredient(new Ingredient("diced onion", new BigDecimal("0.75"), cup));
+        lasagnaRecipe.addIngredient(new Ingredient("large diced bell pepper (green, red, or yellow)", new BigDecimal("0.75"), cup));
+        lasagnaRecipe.addIngredient(new Ingredient("minced cloves garlic", new BigDecimal(2), each));
+        lasagnaRecipe.addIngredient(new Ingredient("28-ounce can good quality tomato sauce", new BigDecimal(1), each));
+        lasagnaRecipe.addIngredient(new Ingredient(" tomato paste", new BigDecimal(3), ounce));
+        lasagnaRecipe.addIngredient(new Ingredient("14-ounce can crushed tomatoes", new BigDecimal(1), each));
+        lasagnaRecipe.addIngredient(new Ingredient("chopped fresh oregano", new BigDecimal(2), tablespoon));
+        lasagnaRecipe.addIngredient(new Ingredient("chopped fresh parsley (preferably flat leaf)", new BigDecimal("0.25"), cup));
+        lasagnaRecipe.addIngredient(new Ingredient("Italian Seasoning", new BigDecimal(1), tablespoon));
+        lasagnaRecipe.addIngredient(new Ingredient("garlic powder and/or garlic salt", new BigDecimal(1), pinch));
+        lasagnaRecipe.addIngredient(new Ingredient("red or white wine vinegar", new BigDecimal(1), tablespoon));
+        lasagnaRecipe.addIngredient(new Ingredient("sugar", new BigDecimal(1), tablespoon));
+        lasagnaRecipe.addIngredient(new Ingredient("salt"));
+        lasagnaRecipe.addIngredient(new Ingredient("dry lasagna noodles ", new BigDecimal("0.5"), lb));
+        lasagnaRecipe.addIngredient(new Ingredient("Ricotta cheese", new BigDecimal(15), ounce));
+        lasagnaRecipe.addIngredient(new Ingredient("Mozzarella cheese", new BigDecimal(24), ounce));
+        lasagnaRecipe.addIngredient(new Ingredient("freshly grated Parmesan cheese", new BigDecimal(4), ounce));
 
         lasagnaRecipe.getCategories().add(italianCategory);
 
@@ -138,20 +137,19 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
 
         Notes applePieNotes = new Notes();
         applePieNotes.setRecipeNotes("There's nothing better than a slice of warm apple pie with a scoop of vanilla ice cream, right? For something a little different, try cinnamon ice cream instead. You could also top it with homemade whipped cream or caramel sauce.");
-        applePieNotes.setRecipe(applePieRecipe);
         applePieRecipe.setNotes(applePieNotes);
 
-        applePieRecipe.getIngredients().add(new Ingredient("apples ", new BigDecimal(3), lb, applePieRecipe));
-        applePieRecipe.getIngredients().add(new Ingredient("lemon juice or apple cider vinegar", new BigDecimal(1), tablespoon, applePieRecipe));
-        applePieRecipe.getIngredients().add(new Ingredient("sugar", new BigDecimal("0.5"), cup, applePieRecipe));
-        applePieRecipe.getIngredients().add(new Ingredient("flour ", new BigDecimal(3), tablespoon, applePieRecipe));
-        applePieRecipe.getIngredients().add(new Ingredient("cinnamon", new BigDecimal("0.5"), teaspoon, applePieRecipe));
-        applePieRecipe.getIngredients().add(new Ingredient("ground allspice", new BigDecimal("0.25"), teaspoon, applePieRecipe));
-        applePieRecipe.getIngredients().add(new Ingredient("ground nutmeg", new BigDecimal("0.25"), teaspoon, applePieRecipe));
-        applePieRecipe.getIngredients().add(new Ingredient("brandy ", new BigDecimal(1), tablespoon, applePieRecipe));
-        applePieRecipe.getIngredients().add(new Ingredient("vanilla extract", new BigDecimal(1), teaspoon, applePieRecipe));
-        applePieRecipe.getIngredients().add(new Ingredient("large egg ", new BigDecimal(1), each, applePieRecipe));
-        applePieRecipe.getIngredients().add(new Ingredient("cream", new BigDecimal(1), tablespoon, applePieRecipe));
+        applePieRecipe.addIngredient(new Ingredient("apples ", new BigDecimal(3), lb));
+        applePieRecipe.addIngredient(new Ingredient("lemon juice or apple cider vinegar", new BigDecimal(1), tablespoon));
+        applePieRecipe.addIngredient(new Ingredient("sugar", new BigDecimal("0.5"), cup));
+        applePieRecipe.addIngredient(new Ingredient("flour ", new BigDecimal(3), tablespoon));
+        applePieRecipe.addIngredient(new Ingredient("cinnamon", new BigDecimal("0.5"), teaspoon));
+        applePieRecipe.addIngredient(new Ingredient("ground allspice", new BigDecimal("0.25"), teaspoon));
+        applePieRecipe.addIngredient(new Ingredient("ground nutmeg", new BigDecimal("0.25"), teaspoon));
+        applePieRecipe.addIngredient(new Ingredient("brandy ", new BigDecimal(1), tablespoon));
+        applePieRecipe.addIngredient(new Ingredient("vanilla extract", new BigDecimal(1), teaspoon));
+        applePieRecipe.addIngredient(new Ingredient("large egg ", new BigDecimal(1), each));
+        applePieRecipe.addIngredient(new Ingredient("cream", new BigDecimal(1), tablespoon));
 
         applePieRecipe.getCategories().add(americanCategory);
 
