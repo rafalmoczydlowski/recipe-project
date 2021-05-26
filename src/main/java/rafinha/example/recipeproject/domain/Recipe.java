@@ -1,12 +1,14 @@
 package rafinha.example.recipeproject.domain;
 
 import lombok.Data;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
 @Data
+@ToString(exclude = {"notes", "ingredients", "categories"})
 @Entity
 public class Recipe {
 

@@ -23,7 +23,80 @@
                     </div>
 
                     <div class="panel-body">
-
+                        <div class="card border-primary mb-3 rounded-top" style="margin-top: 20px">
+                            <h5 class="card-header bg-primary text-white">Notes</h5>
+                            <div class="card-body">
+                                <h6 th:text="${recipe.notes.recipeNotes}"></h6>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div class="row justify-content-start">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <h6>Categories:</h6>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <h6>
+                                            <ul th:each="category:${recipe.categories}">
+                                                <li th:text="${category.getCategoryName()}"></li>
+                                            </ul>
+                                        </h6>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <h6>Difficulty:</h6>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <h6 th:text="${recipe.difficulty}"></h6>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <h6>Servings:</h6>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <h6 th:text="${recipe.servings}"></h6>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <h6>Prep time:</h6>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <h6 th:text="${recipe.prepTime} + ' min'"></h6>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <h6>Cooking time:</h6>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <h6 th:text="${recipe.cookTime} + ' min'"></h6>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <h6>URL:</h6>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <h6 th:text="${recipe.url}"></h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card border-primary mb-3 rounded-top" style="margin-top: 20px">
+                            <h5 class="card-header bg-primary text-white">Ingredients</h5>
+                            <div class="card-body">
+                                <h6>
+                                    <ul th:each="ingredient:${recipe.ingredients}">
+                                        <li th:text="${ingredient.getAmountWithScale() + ' ' + ingredient.unitOfMeasure.getUom() + ' of ' + ingredient.description}"></li>
+                                    </ul>
+                                </h6>
+                            </div>
+                        </div>
+                        <div class="card border-primary mb-3 rounded-top" style="margin-top: 20px">
+                            <h5 class="card-header bg-primary text-white">Directions</h5>
+                            <div class="card-body">
+                                <h6 th:text="${recipe.directions}"></h6>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

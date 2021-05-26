@@ -91,7 +91,7 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
 
         lasagnaRecipe.setNotes(lasagnaNotes);
 
-        lasagnaRecipe.addIngredient(new Ingredient("Extra virgin olive oil"));
+        lasagnaRecipe.addIngredient(new Ingredient("Extra virgin olive oil", new BigDecimal(1), tablespoon));
         lasagnaRecipe.addIngredient(new Ingredient("lean ground beef", new BigDecimal(1), lb));
         lasagnaRecipe.addIngredient(new Ingredient("diced onion", new BigDecimal("0.75"), cup));
         lasagnaRecipe.addIngredient(new Ingredient("large diced bell pepper (green, red, or yellow)", new BigDecimal("0.75"), cup));
@@ -105,13 +105,14 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
         lasagnaRecipe.addIngredient(new Ingredient("garlic powder and/or garlic salt", new BigDecimal(1), pinch));
         lasagnaRecipe.addIngredient(new Ingredient("red or white wine vinegar", new BigDecimal(1), tablespoon));
         lasagnaRecipe.addIngredient(new Ingredient("sugar", new BigDecimal(1), tablespoon));
-        lasagnaRecipe.addIngredient(new Ingredient("salt"));
+        lasagnaRecipe.addIngredient(new Ingredient("salt", new BigDecimal(1), tablespoon));
         lasagnaRecipe.addIngredient(new Ingredient("dry lasagna noodles ", new BigDecimal("0.5"), lb));
         lasagnaRecipe.addIngredient(new Ingredient("Ricotta cheese", new BigDecimal(15), ounce));
         lasagnaRecipe.addIngredient(new Ingredient("Mozzarella cheese", new BigDecimal(24), ounce));
         lasagnaRecipe.addIngredient(new Ingredient("freshly grated Parmesan cheese", new BigDecimal(4), ounce));
 
         lasagnaRecipe.getCategories().add(italianCategory);
+        lasagnaRecipe.getCategories().add(americanCategory);
 
         recipeList.add(lasagnaRecipe);
 
