@@ -2,9 +2,13 @@ package rafinha.example.recipeproject.services;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import rafinha.example.recipeproject.commands.RecipeCommand;
+import rafinha.example.recipeproject.converters.RecipeCommandToRecipe;
+import rafinha.example.recipeproject.converters.RecipeToRecipeCommand;
 import rafinha.example.recipeproject.domain.Recipe;
 import rafinha.example.recipeproject.repositories.RecipeRepository;
 
+import javax.transaction.Transactional;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
@@ -14,9 +18,15 @@ import java.util.Set;
 public class RecipeServiceImpl implements RecipeService {
 
     private final RecipeRepository recipeRepository;
+    private final RecipeToRecipeCommand recipeToRecipeCommand;
+    private final RecipeCommandToRecipe recipeCommandToRecipe;
 
-    public RecipeServiceImpl(RecipeRepository recipeRepository) {
+    public RecipeServiceImpl(RecipeRepository recipeRepository,
+                             RecipeCommandToRecipe recipeCommandToRecipe,
+                             RecipeToRecipeCommand recipeToRecipeCommand) {
         this.recipeRepository = recipeRepository;
+        this.recipeCommandToRecipe = recipeCommandToRecipe;
+        this.recipeToRecipeCommand = recipeToRecipeCommand;
     }
 
     @Override
@@ -36,5 +46,14 @@ public class RecipeServiceImpl implements RecipeService {
         }
 
         return recipeOptional.get();
+    }
+
+    @Override
+    @Transactional
+    public RecipeCommand saveRecipeCommand(RecipeCommand recipeCommand) {
+        Recipe detachedRecipe = recipeCommandToRecipe.convert(recipeCommand); // convert Domain Object to Command Object
+        Recipe savedRecipe = recipeRepository.save(detachedRecipe); // save the object to the repository
+        log.debug("Saved RecipeId: " + savedRecipe.getId()); // we create a log about the saved object
+        return recipeToRecipeCommand.convert(savedRecipe); // we convert the saved object back to Command Object and return it
     }
 }
