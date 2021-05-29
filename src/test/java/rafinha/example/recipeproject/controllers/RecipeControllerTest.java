@@ -9,6 +9,7 @@ import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import rafinha.example.recipeproject.commands.RecipeCommand;
 import rafinha.example.recipeproject.domain.Recipe;
 import rafinha.example.recipeproject.services.RecipeService;
 
@@ -42,5 +43,15 @@ class RecipeControllerTest {
         mockMvc.perform(get("/recipe/show/1"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("recipe/show"));
+    }
+
+    @Test
+    void newRecipe() throws Exception {
+        RecipeCommand command = new RecipeCommand();
+        command.setId(1L);
+
+        mockMvc.perform(get("/recipe/new"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("recipe/newrecipeform"));
     }
 }

@@ -4,12 +4,13 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import rafinha.example.recipeproject.commands.RecipeCommand;
 import rafinha.example.recipeproject.services.RecipeService;
 
 @Slf4j
-@RequestMapping
 @Controller
 public class RecipeController {
 
@@ -24,5 +25,18 @@ public class RecipeController {
         log.debug("Getting Recipe By Id");
         model.addAttribute("recipe", recipeService.findById(Long.valueOf(id)));
         return "recipe/show";
+    }
+
+    @GetMapping("/recipe/new")
+    public String newRecipe(Model model) {
+        log.debug("Create New Recipe");
+        model.addAttribute("recipe", new RecipeCommand());
+        return "recipe/newrecipeform";
+    }
+
+    @PostMapping("recipe")
+    public String saveAndUpdate(@ModelAttribute RecipeCommand command) {
+        RecipeCommand savedCommand = recipeService.saveRecipeCommand(command);
+        return "redirect:/recipe/show/" + savedCommand.getId();
     }
 }
