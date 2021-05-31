@@ -24,17 +24,20 @@
                 <div class="panel-body">
                     <div class="table-responsive" th:if="${not #lists.isEmpty(recipies)}">
                         <table class="table table-striped table-hover table-bordered">
+                            <caption>List of Recipies</caption>
                             <thead class="thead-inverse">
                             <tr>
                                 <th scope="col">ID</th>
                                 <th scope="col">Description</th>
                                 <th scope="col">View</th>
+                                <th scope="col">Update</th>
                             </tr>
                             </thead>
                             <tr th:each="recipe : ${recipies}">
                                 <td th:text="${recipe.id}"></td>
                                 <td th:text="${recipe.description}"></td>
-                                <td><a href="#" th:href="@{'/recipe/show/' + ${recipe.id}}">View</a></td>
+                                <td><a href="#" th:href="@{'/recipe/' + ${recipe.id} + '/show'}">View</a></td>
+                                <td><a href="#" th:href="@{'/recipe/' + ${recipe.id} + '/update'}">Update</a></td>
                             </tr>
                         </table>
                     </div>

@@ -14,29 +14,38 @@ import rafinha.example.recipeproject.services.RecipeService;
 @Controller
 public class RecipeController {
 
+    private static final String RECIPE = "recipe";
+
     private final RecipeService recipeService;
 
     public RecipeController(RecipeService recipeService) {
         this.recipeService = recipeService;
     }
 
-    @GetMapping("/recipe/show/{id}")
+    @GetMapping("/recipe/{id}/show")
     public String getRecipeById(@PathVariable String id, Model model) {
         log.debug("Getting Recipe By Id");
-        model.addAttribute("recipe", recipeService.findById(Long.valueOf(id)));
+        model.addAttribute(RECIPE, recipeService.findById(Long.valueOf(id)));
         return "recipe/show";
     }
 
     @GetMapping("/recipe/new")
     public String newRecipe(Model model) {
         log.debug("Create New Recipe");
-        model.addAttribute("recipe", new RecipeCommand());
+        model.addAttribute(RECIPE, new RecipeCommand());
         return "recipe/newrecipeform";
     }
 
     @PostMapping("recipe")
     public String saveAndUpdate(@ModelAttribute RecipeCommand command) {
         RecipeCommand savedCommand = recipeService.saveRecipeCommand(command);
-        return "redirect:/recipe/show/" + savedCommand.getId();
+        return "redirect:/recipe/" + savedCommand.getId() + "/show";
+    }
+
+    @GetMapping("recipe/{id}/update")
+    public String updateRecipeById(@PathVariable String id, Model model) {
+        log.debug("Update Recipe By Id");
+        model.addAttribute(RECIPE, recipeService.updateRecipeCommandById(Long.valueOf(id)));
+        return "recipe/newrecipeform";
     }
 }

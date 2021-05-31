@@ -40,6 +40,6 @@ class RecipeControllerIT {
         recipeCommand.setNotes(notesCommand);
 
         String viewName = controller.saveAndUpdate(recipeCommand);
-        assertEquals("redirect:/recipe/show/1", viewName);
+        assertEquals("redirect:/recipe/1/show", viewName);
     }
 }
