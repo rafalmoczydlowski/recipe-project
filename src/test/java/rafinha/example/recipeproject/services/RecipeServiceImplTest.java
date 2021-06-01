@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import rafinha.example.recipeproject.commands.RecipeCommand;
 import rafinha.example.recipeproject.converters.RecipeCommandToRecipe;
 import rafinha.example.recipeproject.converters.RecipeToRecipeCommand;
 import rafinha.example.recipeproject.domain.Recipe;
@@ -69,5 +70,35 @@ class RecipeServiceImplTest {
         Set<Recipe> recipeSet = recipeService.getRecipies();
         assertEquals(1, recipeSet.size());
         verify(recipeRepository, times(1)).findAll();
+    }
+
+    @Test
+    void getRecipeCommandById() {
+        Recipe recipe = new Recipe();
+        recipe.setId(1L);
+
+        Optional<Recipe> optionalRecipe = Optional.of(recipe);
+
+        when(recipeRepository.findById(anyLong())).thenReturn(optionalRecipe);
+
+        RecipeCommand command = new RecipeCommand();
+        command.setId(1L);
+
+        when(recipeToRecipeCommand.convert(any())).thenReturn(command);
+
+        RecipeCommand recipeCommandById = recipeService.findCommandById(1L);
+
+        assertNotNull(recipeCommandById);
+        verify(recipeRepository, times(1)).findById(anyLong());
+        verify(recipeRepository, never()).findAll();
+    }
+
+    @Test
+    void deleteRecipeById() {
+        Long recipeIdToDelete = Long.valueOf(1L);
+
+        recipeService.deleteRecipeById(recipeIdToDelete);
+
+        verify(recipeRepository, times(1)).deleteById(anyLong());
     }
 }
