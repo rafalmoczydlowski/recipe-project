@@ -82,7 +82,16 @@
                             </div>
                         </div>
                         <div class="card border-primary mb-3 rounded-top" style="margin-top: 20px">
-                            <h5 class="card-header bg-primary text-white">Ingredients</h5>
+                            <div class="card-header bg-primary text-white">
+                                <div class="row">
+                                    <div class="col-md-11">
+                                        <h5>Ingredients</h5>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <a class="btn btn-outline-light btn-sm" href="#" th:href="@{'/recipe/' + ${recipe.id} + '/ingredients'}" role="button">View</a>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="card-body">
                                 <h6>
                                     <ul th:each="ingredient:${recipe.ingredients}">

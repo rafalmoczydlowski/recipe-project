@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Show Recipe</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+    <script src="/webjars/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.0.1/js/bootstrap.min.js" th:src="@{/webjars/bootstrap/5.0.1/js/bootstrap.min.js}"></script>
+</head>
+<body>
+
+<div class="container-fluid" style="margin-top: 20px">
+    <div class="row justify-content-md-center">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="pannel-group">
+                <div class="panel panel-primary">
+                    <div class="container p-3 my-3 bg-primary text-white rounded-pill">
+                        <div class="panel-heading">
+                            <h1 class="panel-title" style="text-align: center" th:text="${recipe.description}"></h1>
+                        </div>
+                    </div>
+
+                    <div class="panel-body">
+                        <div class="card border-primary mb-3 rounded-top" style="margin-top: 20px">
+                            <h5 class="card-header bg-primary text-white">Ingredients</h5>
+                            <div class="card-body">
+                                <div class="table-responsive" th:if="${not #lists.isEmpty(recipe.ingredients)}">
+                                    <table class="table table-hover">
+                                        <thead class="thead-inverse text-primary">
+                                        <tr>
+                                            <th scope="col">ID</th>
+                                            <th scope="col">Description</th>
+                                            <th scope="col">View</th>
+                                            <th scope="col">Update</th>
+                                            <th scope="col">Delete</th>
+                                        </tr>
+                                        </thead>
+                                        <tr th:each="ingredient : ${recipe.ingredients}">
+                                            <td th:text="${ingredient.id}">ID</td>
+                                            <td th:text="${ingredient.amount} + ' of ' + ${ingredient.unitOfMeasureCommand.getUom()} + ' ' + ${ingredient.description}">Description</td>
+                                            <td><a href="#" th:href="@{'/recipe/' + ${recipe.id} + '/ingredient' + ${ingredient.id} + '/show'}">View</a></td>
+                                            <td><a href="#" th:href="@{'/recipe/' + ${recipe.id} + '/ingredient' + ${ingredient.id} + '/update'}">Update</a></td>
+                                            <td><a href="#" th:href="@{'/recipe/' + ${recipe.id} + '/ingredient' + ${ingredient.id} + '/delete'}">Delete</a></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a class="btn btn-outline-primary" style="margin-bottom: 20px" href="/index.html" role="button">Home</a>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>
