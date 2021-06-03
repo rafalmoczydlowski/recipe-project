@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Show Recipe</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+    <script src="/webjars/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.0.1/js/bootstrap.min.js" th:src="@{/webjars/bootstrap/5.0.1/js/bootstrap.min.js}"></script>
+</head>
+<body>
+
+<div class="container-fluid" style="margin-top: 20px">
+    <div class="row justify-content-md-center">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="pannel-group">
+                <div class="panel panel-primary">
+                    <div class="container p-3 my-3 bg-primary text-white rounded-pill">
+                        <div class="panel-heading">
+                            <h1 class="panel-title" style="text-align: center" th:text="'Ingredient No. ' + ${ingredient.id} + ' of ' + ${ingredient.getRecipe().description}"></h1>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="card border-primary mb-3 rounded-top" style="margin-top: 20px">
+                            <h5 class="card-header bg-primary text-white">Ingredient details</h5>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="card border-primary mb-3 rounded-top">
+                                            <h5 class="card-header bg-primary text-white">Amount</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <h6 th:text="${ingredient.amount}"></h6>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="card border-primary mb-3 rounded-top">
+                                            <h5 class="card-header bg-primary text-white">Unit Of Measure</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <h6 th:text="${ingredient.unitOfMeasureCommand.getUom()}"></h6>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="card border-primary mb-3 rounded-top">
+                                            <h5 class="card-header bg-primary text-white">Description of Ingredient</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <h6 th:text="${ingredient.description}"></h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a class="btn btn-outline-primary" style="margin-bottom: 20px" href="/index.html" role="button">Home</a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

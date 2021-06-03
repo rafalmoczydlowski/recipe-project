@@ -40,9 +40,9 @@
                                         <tr th:each="ingredient : ${recipe.ingredients}">
                                             <td th:text="${ingredient.id}">ID</td>
                                             <td th:text="${ingredient.amount} + ' of ' + ${ingredient.unitOfMeasureCommand.getUom()} + ' ' + ${ingredient.description}">Description</td>
-                                            <td><a href="#" th:href="@{'/recipe/' + ${recipe.id} + '/ingredient' + ${ingredient.id} + '/show'}">View</a></td>
-                                            <td><a href="#" th:href="@{'/recipe/' + ${recipe.id} + '/ingredient' + ${ingredient.id} + '/update'}">Update</a></td>
-                                            <td><a href="#" th:href="@{'/recipe/' + ${recipe.id} + '/ingredient' + ${ingredient.id} + '/delete'}">Delete</a></td>
+                                            <td><a href="#" th:href="@{'/recipe/' + ${recipe.id} + '/ingredient/' + ${ingredient.id} + '/show'}">View</a></td>
+                                            <td><a href="#" th:href="@{'/recipe/' + ${recipe.id} + '/ingredient/' + ${ingredient.id} + '/update'}">Update</a></td>
+                                            <td><a href="#" th:href="@{'/recipe/' + ${recipe.id} + '/ingredient/' + ${ingredient.id} + '/delete'}">Delete</a></td>
                                         </tr>
                                     </table>
                                 </div>
