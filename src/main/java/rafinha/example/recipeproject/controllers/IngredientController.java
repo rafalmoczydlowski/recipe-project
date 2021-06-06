@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import rafinha.example.recipeproject.commands.IngredientCommand;
+import rafinha.example.recipeproject.commands.RecipeCommand;
+import rafinha.example.recipeproject.commands.UnitOfMeasureCommand;
 import rafinha.example.recipeproject.services.IngredientService;
 import rafinha.example.recipeproject.services.RecipeService;
 import rafinha.example.recipeproject.services.UnitOfMeasureService;
@@ -39,6 +41,19 @@ public class IngredientController {
         log.debug("Show ingredient " + id + " of " + recipeId + "recipe");
         model.addAttribute("ingredient", ingredientService.findIngredientCommandByRecipeId(Long.valueOf(recipeId), Long.valueOf(id)));
         return "recipe/ingredient/show";
+    }
+
+    @GetMapping("recipe/{recipeId}/ingredient/new")
+    public String showNewIngredientForm(@PathVariable String recipeId, Model model) {
+        RecipeCommand recipeCommand = service.findCommandById(Long.valueOf(recipeId));
+        // todo raise exception if recipeCommand is null
+
+        IngredientCommand ingredientCommand = new IngredientCommand();
+        ingredientCommand.setRecipeId(Long.valueOf(recipeId));
+        model.addAttribute("ingredient", ingredientCommand);
+        ingredientCommand.setUnitOfMeasureCommand(new UnitOfMeasureCommand());
+        model.addAttribute("uomList", unitOfMeasureService.listAllUoms());
+        return "recipe/ingredient/ingredientform";
     }
 
     @GetMapping("recipe/{recipeId}/ingredient/{id}/update")
