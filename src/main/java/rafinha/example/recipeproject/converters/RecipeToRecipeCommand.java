@@ -39,10 +39,10 @@ public class RecipeToRecipeCommand implements Converter<Recipe, RecipeCommand> {
         recipeCommand.setCookTime(recipe.getCookTime());
         recipeCommand.setSource(recipe.getSource());
 
-        if(recipe.getCategories() != null && recipe.getCategories().size() > 0)
+        if(recipe.getCategories() != null && !recipe.getCategories().isEmpty())
             recipe.getCategories().forEach(category -> recipeCommand.getCategories().add(categoryConverter.convert(category)));
 
-        if(recipe.getIngredients() != null && recipe.getCategories().size() > 0)
+        if(recipe.getIngredients() != null && !recipe.getCategories().isEmpty())
             recipe.getIngredients().forEach(ingredient -> recipeCommand.getIngredients().add(ingredientConverter.convert(ingredient)));
 
         return recipeCommand;
