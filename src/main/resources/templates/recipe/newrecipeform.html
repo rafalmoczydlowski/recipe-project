@@ -62,11 +62,11 @@
                                     </div>
                                     <div class="col-md-3 form-group">
                                         <label>Difficulty:</label>
-                                        <select class="form-control">
-                                            <option>EASY</option>
-                                            <option>MEDIUM</option>
-                                            <option>INTERMEDIATE</option>
-                                            <option>HARD</option>
+                                        <select class="form-control" th:field="*{difficulty}">
+                                            <option th:each="difficultyValue : ${T(rafinha.example.recipeproject.domain.Difficulty).values()}"
+                                                    th:value="${difficultyValue.name()}"
+                                                    th:text="${difficultyValue.name()}">
+                                            </option>
                                         </select>
                                     </div>
                                 </div>
