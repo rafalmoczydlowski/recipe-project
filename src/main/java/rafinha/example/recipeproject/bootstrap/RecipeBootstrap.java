@@ -86,6 +86,7 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
                 "\n" +
                 "9. Cool and serve");
         lasagnaRecipe.setUrl("https://www.simplyrecipes.com/recipes/lasagna/");
+        lasagnaRecipe.setSource("N/D");
         Notes lasagnaNotes = new Notes();
         lasagnaNotes.setRecipeNotes("This classic lasagna is made with an easy meat sauce as the base. Layer the sauce with noodles and cheese, then bake until bubbly! This is great for feeding a big family, and freezes well, too.");
 
@@ -140,6 +141,7 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
                 "\n" +
                 "9. Let cool");
         applePieRecipe.setUrl("https://www.simplyrecipes.com/recipes/old_fashioned_apple_pie/");
+        applePieRecipe.setSource("N/D");
 
         Notes applePieNotes = new Notes();
         applePieNotes.setRecipeNotes("There's nothing better than a slice of warm apple pie with a scoop of vanilla ice cream, right? For something a little different, try cinnamon ice cream instead. You could also top it with homemade whipped cream or caramel sauce.");

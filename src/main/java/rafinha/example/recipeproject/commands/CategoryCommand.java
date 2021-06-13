@@ -11,4 +11,9 @@ public class CategoryCommand {
 
     private Long id;
     private String categoryName;
+
+    @Override
+    public String toString() {
+        return id + "=" + categoryName;
+    }
 }

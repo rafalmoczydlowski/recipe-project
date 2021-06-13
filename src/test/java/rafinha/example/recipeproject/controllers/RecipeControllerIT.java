@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import rafinha.example.recipeproject.commands.NotesCommand;
 import rafinha.example.recipeproject.commands.RecipeCommand;
+import rafinha.example.recipeproject.services.CategoryService;
 import rafinha.example.recipeproject.services.RecipeService;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -21,10 +22,13 @@ class RecipeControllerIT {
     @Autowired
     RecipeService service;
 
+    @Autowired
+    CategoryService categoryService;
+
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
-        controller = new RecipeController(service);
+        controller = new RecipeController(service, categoryService);
     }
 
     @AfterEach

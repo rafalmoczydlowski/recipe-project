@@ -12,6 +12,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import rafinha.example.recipeproject.commands.RecipeCommand;
 import rafinha.example.recipeproject.domain.Recipe;
+import rafinha.example.recipeproject.services.CategoryService;
 import rafinha.example.recipeproject.services.RecipeService;
 
 import static org.mockito.ArgumentMatchers.any;
@@ -27,6 +28,9 @@ class RecipeControllerTest {
     @Mock
     RecipeService service;
 
+    @Mock
+    CategoryService categoryService;
+
     RecipeController controller;
 
     MockMvc mockMvc;
@@ -34,7 +38,7 @@ class RecipeControllerTest {
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
-        controller = new RecipeController(service);
+        controller = new RecipeController(service, categoryService);
         mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
     }
 
